@@ -103,14 +103,12 @@ int Statistics::ks(vector<float> numbers,float alpha,int n){
     float i_1_n=0;
     for (std::vector<float>::iterator it=numbers.begin(); it!=numbers.end(); ++it){
         i_n = (float)i/n;
-        //n_i = (float)*it/max;
 	    n_i=*it;
         i_1_n = (float)(i-1);
         i_1_n = (float)i_1_n/n;
 
         float aux = abs(i_n - n_i);
         float aux2 = abs(n_i - i_1_n);
-        //cout<<n_i<< " - "<< i <<" - 1 / n"<<" = "<< i_1_n <<endl; 
 
         if (aux > dmax)
         	dmax = aux;
@@ -158,6 +156,7 @@ int Statistics::rachas(vector<float> numbers,float alpha,int n){
     float anterior=-1.0F;
     int isCreciendo=-1;
     for (std::vector<float>::iterator it=numbers.begin(); it!=numbers.end(); ++it){
+        //cout<< *it <<endl;
         if (sw == 0){
             sw =1;
             anterior = *it;

@@ -142,12 +142,10 @@ int main(int argc, char const *argv[]){
         cout << "\t\tN: "<<numRamdoms<<" Alpha: "<< alpha_norm <<  endl;
         tests+= axioma.statistical.rachas(result,alpha_norm,numRamdoms);
        
-
-
     
-        //string file_name ("./Resultados/lista_"+std::to_string(i) +"_a_"+std::to_string(a)+"_m_"+std::to_string(m)+".csv");
-        //cout<<"File saved: "<<file_name<<endl;
-       // axioma.utils.primesToCSV(result,file_name);
+        string file_name ("./Resultados/lista_"+std::to_string(i) +"_a_"+std::to_string(a)+"_m_"+std::to_string(m)+".csv");
+        cout<<"File saved: "<<file_name<<endl;
+       axioma.utils.primesToCSV(result,file_name);
         cout << "------------------------------ SUMMARY ------------------------------"<<endl<<endl;
         cout << "\tTotal test 3"<<endl;
         cout << "\tTest passed: "<<tests <<"/3"<<endl<<endl;
@@ -155,15 +153,15 @@ int main(int argc, char const *argv[]){
         primeID--; 
         m =primes.at(primeID); 
 
-    }  
-    
+    }      
+      
     cout<<endl <<"-------- Pseudorandom: undefined PERIOD --------"<<endl<<endl;
    
-    long aa = 11; 
-    long mm = 43546;  
+    long aa = 110351; 
+    long mm = 429496;  
     i =0;
     vector<float> result = axioma.utils.myRandomsNorm( aa, mm, numRamdoms );
-    string file_name ("./Resultados/lista_"+std::to_string(i) +"_a_"+std::to_string(a)+"_m_"+std::to_string(m)+".csv");
+    string file_name ("./Resultados/lista_"+std::to_string(i) +"_a_"+std::to_string(aa)+"_m_"+std::to_string(mm)+".csv");
     cout<<"File saved: "<<file_name<<endl;
     axioma.utils.primesToCSV(result,file_name);
 

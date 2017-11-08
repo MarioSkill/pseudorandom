@@ -205,11 +205,12 @@ int main(int argc, char const *argv[]){
  
 	map <float, int> bm = dist.getFrecuency( dist.boxMuller(pseudoRandoms) );
 	
-	p.Graficar(dist.getFrecuencyOfNumbrer(bm),"./Graficos/BOXMULLER");
-	vector<float> gauss;
+	p.Graficar(bm,"./Graficos/BOXMULLER");
+	std::map<float, float> gauss;
 	for (map <float, int>::iterator it=bm.begin(); it!=bm.end(); ++it){
-	    gauss.push_back(dist.funDensidad(it->first));
-	}
+		gauss.insert ( pair<float,float>(it->first,dist.funDensidad(it->first)) );
+		//gauss.push_back(dist.funDensidad(it->first));
+	} 
 
 	p.Graficar(gauss,"./Graficos/Normal-BM");
 
@@ -221,14 +222,16 @@ int main(int argc, char const *argv[]){
 	map <float, int> ms =dist.getFrecuency( dist.marsaglia(pseudoRandoms) );
 	dist.dataToCSV  ("MARSAGLIA",ms,0);
 
-	p.Graficar(dist.getFrecuencyOfNumbrer(ms),"./Graficos/MARSAGLIA");
+	p.Graficar(ms,"./Graficos/MARSAGLIA");
 	
-	vector<float> gauss2;
+	std::map<float, float> gauss2;
 	for (map <float, int>::iterator it=ms.begin(); it!=ms.end(); ++it){
-		gauss2.push_back(dist.funDensidad(it->first));
-	}
+		//gauss2.push_back(dist.funDensidad(it->first));
+		gauss2.insert ( pair<float,float>(it->first,dist.funDensidad(it->first)) );
+	} 
 
-	p.Graficar(gauss,"./Graficos/Normal-MS");
+	p.Graficar(gauss2,"./Graficos/Normal-MS");
+
 	vector<float> inve_gm;
 	for (vector<float>::iterator it=pseudoRandoms.begin(); it!=pseudoRandoms.end(); ++it){
 		inve_gm.push_back(dist.geometricaInversa(*it));
@@ -237,10 +240,9 @@ int main(int argc, char const *argv[]){
 	} 
 
 
-
 	map <float, int> Invgm = dist.getFrecuency(inve_gm);
 
-	p.Graficar(dist.getFrecuencyOfNumbrer(Invgm),"./Graficos/INV_GEOMETRICA");
+	p.Graficar(Invgm,"./Graficos/INV_GEOMETRICA");
 
 	std::vector<float> geometrica=dist.getNumbrerOfDistribution(Invgm);
 	std::vector<float> gm;
@@ -251,6 +253,8 @@ int main(int argc, char const *argv[]){
 	p.Graficar(gm,"./Graficos/GEOMETRICA");
 
 	dist.dataToCSV  ("./Graficos/GEOMETRICA",Invgm,1);
-	
+
+
+	//cout<<dist.geometricaInversa(0)<<endl;
  
 }

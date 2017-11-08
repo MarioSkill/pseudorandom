@@ -87,7 +87,7 @@ vector<unsigned long> Utils::getprimeFactors(int n) {
 vector<float> Utils::myRandomsNorm(int a,int m, int n_ran ){
 
 	vector<int> result;
-	int r=5;
+	int r=2;
    // int c = 32768;
 	for (int x = 0; x < n_ran; ++x) { 
 		r = ( a*r  );
@@ -108,7 +108,7 @@ vector<float> Utils::myRandomsNorm(int a,int m, int n_ran ){
 	num = (float)(*it - min);
 	den= (max - min);
 	numero= (float)(num/den);
-	
+	   //cout << numero<<endl;
         vnorm.push_back(numero);
     }
 
